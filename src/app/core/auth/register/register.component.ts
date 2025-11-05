@@ -4,10 +4,11 @@ import { AuthService } from '../../services/auth/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { InputComponent } from "../../../shared/components/input/input.component";
 import { Subscription } from 'rxjs';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule, RouterLink, InputComponent],
+  imports: [ReactiveFormsModule, RouterLink, InputComponent, TranslateModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
@@ -18,10 +19,12 @@ export class RegisterComponent implements OnInit {
   hidePassword: boolean = true;
   hideRePassword: boolean = true;
   registerForm!: FormGroup;
-  subscription:Subscription = new Subscription();
+  subscription: Subscription = new Subscription();
   private readonly authService = inject(AuthService);
   private readonly fb = inject(FormBuilder);
   private readonly router = inject(Router);
+  public readonly translate = inject(TranslateService);
+
 
   ngOnInit(): void {
     this.initForm();

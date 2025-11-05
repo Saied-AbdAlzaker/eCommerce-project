@@ -5,10 +5,11 @@ import { Router, RouterLink } from '@angular/router';
 import { InputComponent } from "../../../shared/components/input/input.component";
 import { Subscription } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, RouterLink, InputComponent],
+  imports: [ReactiveFormsModule, RouterLink, InputComponent, TranslateModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -22,7 +23,7 @@ export class LoginComponent implements OnInit {
   private readonly authService = inject(AuthService);
   private readonly fb = inject(FormBuilder);
   private readonly router = inject(Router);
-  private readonly cookieService = inject(CookieService);
+  public readonly translate = inject(TranslateService);
 
   ngOnInit(): void {
     this.initForm();

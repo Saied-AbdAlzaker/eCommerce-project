@@ -1,6 +1,6 @@
 <section class="w-[95%] mx-auto">
-    <h2 class="text-3xl text-green-400">Popular Products</h2>
-    <input type="search" placeholder="Search...." [(ngModel)]="searchValue"
+    <h2 class="text-3xl text-green-400">{{'home.Products'|translate}}</h2>
+    <input type="search" [placeholder]="translate.instant('home.search')" [(ngModel)]="searchValue"
         class="w-1/2 mx-auto block my-5 rounded-2xl border border-green-200" />
     <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-2">
         @for (product of productsList() | paginate: { id: 'products',

@@ -18,22 +18,22 @@
                 <li>
                     <a routerLink="/home" routerLinkActive="rounded-2xl text-blue-600"
                         class="block py-2 px-3 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
-                        aria-current="page">Home</a>
+                        aria-current="page">{{'navbar.home' | translate}}</a>
                 </li>
                 <li>
                     <a routerLink="/products" routerLinkActive="rounded-2xl text-blue-600"
                         class="block py-2 px-3 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
-                        aria-current="page">Products</a>
+                        aria-current="page">{{'navbar.products' | translate}}</a>
                 </li>
                 <li>
                     <a routerLink="/categories" routerLinkActive="rounded-2xl text-blue-600"
-                        class="block py-2 px-3 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
-                        aria-current="page">Categories</a>
+                        class="block py-2 px-3 me-3 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
+                        aria-current="page">{{'navbar.categories' | translate}}</a>
                 </li>
                 <li>
                     <a routerLink="/brands" routerLinkActive="rounded-2xl text-blue-600"
                         class="block py-2 px-3 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
-                        aria-current="page">Brands</a>
+                        aria-current="page">{{'navbar.brands' | translate}}</a>
                 </li>
             </ul>
             <ul
@@ -65,6 +65,15 @@
                         <i class="fab fa-youtube"></i>
                     </a>
                 </li>
+                <!-- translate -->
+                <li>
+                    <a [class.hidden]="currentLang('en')" (click)="change('en')" 
+                        class="block py-2 px-3 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent cursor-pointer">English</a>
+                </li>
+                <li>
+                    <a [class.hidden]="currentLang('ar')" (click)="change('ar')" 
+                        class="block py-2 px-3 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent cursor-pointer">عربي</a>
+                </li>
                 @if (isLogin) {
                 <li>
                     <a routerLink="/cart" routerLinkActive="rounded-2xl text-blue-600"
@@ -79,18 +88,18 @@
                 <li>
                     <a routerLinkActive="rounded-2xl text-blue-600" (click)="signout()"
                         class="block cursor-pointer py-2 px-3 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
-                        aria-current="page">Signout</a>
+                        aria-current="page">{{'navbar.logout' | translate}}</a>
                 </li>
                 }@else {
                 <li>
                     <a routerLink="/login" routerLinkActive="rounded-2xl text-blue-600"
                         class="block py-2 px-3 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
-                        aria-current="page">Signin</a>
+                        aria-current="page">{{'navbar.signin' | translate}}</a>
                 </li>
                 <li>
                     <a routerLink="/register" routerLinkActive="rounded-2xl text-blue-600"
-                        class="block py-2 px-3 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
-                        aria-current="page">Signup</a>
+                        class="block ms-3 py-2 px-3 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
+                        aria-current="page">{{'navbar.signup' | translate}}</a>
                 </li>
                 }
             </ul>

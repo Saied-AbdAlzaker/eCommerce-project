@@ -1,28 +1,28 @@
 <section class="shadow-lg rounded-2xl max-w-2xl mx-auto my-3 p-5">
-    <h3 class="text-2xl font-semibold mb-2 text-blue-600 text-center">Login Now</h3>
+    <h3 class="text-2xl font-semibold mb-2 text-blue-600 text-center">{{'auth.signinForm' |translate}}</h3>
     <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
         <app-input [control]="loginForm.get('email')" [typeInput]="'email'" [idInput]="'email'"
-            [labelInput]="'Email'"></app-input>
+            [labelInput]="this.translate.instant('login.email')"></app-input>
 
-        <app-input [control]="loginForm.get('password')" [idInput]="'password'" [labelInput]="'Password'">
-            Please enter a valid password.
+        <app-input [control]="loginForm.get('password')" [idInput]="'password'" [labelInput]="this.translate.instant('login.password')">
+            {{'login.valid-password' |translate}}
         </app-input>
 
         <div class="flex justify-between">
-            <a routerLink="/forget-password" class="text-blue-600 underline cursor-pointer">Forget Password</a>
+            <a routerLink="/forget-password" class="text-blue-600 underline cursor-pointer">{{'auth.forgetPasswordForm' |translate}}</a>
 
             <button type="submit" class="btn w-[20%]">
                 @if (loading) {
                 <i class="fa fa-spin fa-spinner"></i>
                 } @else{
-                Login
+                {{'login.login' |translate}}
                 }
             </button>
         </div>
         <div class="text-center">
-            <span>Create a new account
+            <span> {{'register.create' |translate}}
                 <a routerLink="/register" class="underline text-blue-600 cursor-pointer">
-                    Register
+                    {{'register.register' |translate}}
                 </a>
             </span>
         </div>

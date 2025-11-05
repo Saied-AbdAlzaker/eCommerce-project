@@ -5,10 +5,11 @@ import { AuthService } from '../../services/auth/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-forget-password',
-  imports: [ReactiveFormsModule, InputComponent],
+  imports: [ReactiveFormsModule, InputComponent, TranslateModule],
   templateUrl: './forget-password.component.html',
   styleUrl: './forget-password.component.scss'
 })
@@ -21,7 +22,7 @@ export class ForgetPasswordComponent implements OnInit {
   private readonly fb = inject(FormBuilder);
   private readonly authService = inject(AuthService);
   private readonly toastrService = inject(ToastrService);
-  private readonly cookieService = inject(CookieService);
+  public readonly translate = inject(TranslateService);
   private readonly router = inject(Router);
 
   ngOnInit(): void {
@@ -68,7 +69,7 @@ export class ForgetPasswordComponent implements OnInit {
       this.authService.resetPassword(this.resetPassword.value).subscribe({
         next: (res) => {
           this.toastrService.success('Success');
-          this.cookieService.get('token');
+          localStorage.getItem('token');
           this.router.navigate(['/home']);
         }
       })

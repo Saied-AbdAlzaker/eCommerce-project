@@ -2,10 +2,11 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CardProductComponent } from "../../../../shared/components/card-product/card-product.component";
 import { Product } from '../../../../core/models/products';
 import { ProductsService } from '../../../../core/services/products/products.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-popular-product',
-  imports: [CardProductComponent],
+  imports: [CardProductComponent,TranslateModule],
   templateUrl: './popular-product.component.html',
   styleUrl: './popular-product.component.scss'
 })

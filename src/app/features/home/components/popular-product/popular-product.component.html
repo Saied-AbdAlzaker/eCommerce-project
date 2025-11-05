@@ -1,5 +1,5 @@
 <section>
-    <h2 class="text-3xl text-green-400">Popular Products</h2>
+    <h2 class="text-3xl text-green-400">{{'home.Products'|translate}}</h2>
     <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-2">
         @for (product of productsList.slice(0,8); track product.id) {
         <app-card-product [product]="product" />

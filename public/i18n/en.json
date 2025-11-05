@@ -17,5 +17,42 @@
         "forgetPasswordForm": "Forgot Password?",
         "code": "Enter the OTP Code",
         "newPasswordForm": "Create a new password"
+    },
+    "login": {
+        "login": "Login",
+        "email": "Email",
+        "password": "Password",
+        "valid-password": "Please enter a valid password."
+    },
+    "register": {
+        "create": "Create a new account",
+        "valid-password": "Please enter a valid phone egypt.",
+        "register": "Register",
+        "name": "Name",
+        "email": "Email",
+        "password": "Password",
+        "confirm": "Confirm password",
+        "phone": "Phone",
+        "account": "already have an account?"
+    },
+    "forgetPassword": {
+        "verifyEmail": "Verify Email",
+        "verifyCode": "Verify Code",
+        "resetPassword": "Reset Password",
+        "resetCode": "Reset Code",
+        "newPassword": "New Password"
+    },
+    "validation": {
+        "required": "Input is required.",
+        "minlength": "Input should be more than or equal 3 character.",
+        "maxlength": "Input should be less than or equal 20 character.",
+        "emailAddress": "Please enter a valid email address.",
+        "incorrect": "Password confirmation is incorrect."
+    },
+    "home": {
+        "categories": "Shop Popular Categories",
+        "Products": "Popular Products",
+        "search": "Search....",
+        "addCart":"Add to cart"
     }
 }

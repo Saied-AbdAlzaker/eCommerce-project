@@ -2,10 +2,11 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CategoriesService } from '../../../../core/services/categories/categories.service';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { Category } from '../../../../core/models/category';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-popular-category',
-  imports: [CarouselModule],
+  imports: [CarouselModule,TranslateModule],
   templateUrl: './popular-category.component.html',
   styleUrl: './popular-category.component.scss'
 })

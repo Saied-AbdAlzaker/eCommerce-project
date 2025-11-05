@@ -61,17 +61,17 @@
     <div class="p-2 mb-4 mt-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
         role="alert">
         @if (control?.hasError('required')) {
-        <span class="font-medium">Input is required.</span>
+        <span class="font-medium">{{'validation.required'|translate}}</span>
         } @else if (control?.hasError('minlength')) {
-        <span class="font-medium">Input should be more than or equal 3 character.</span>
+        <span class="font-medium">{{'validation.minlength'|translate}}</span>
         } @else if (control?.hasError('maxlength')) {
-        <span class="font-medium">Input should be less than or equal 20 character.</span>
+        <span class="font-medium">{{'validation.maxlength'|translate}}</span>
         } @else if (control?.hasError('email')) {
-        <span class="font-medium">Please enter a valid email address.</span>
+        <span class="font-medium">{{'validation.emailAddress'|translate}}</span>
         } @else if (control?.hasError('pattern')) {
         <span class="font-medium"><ng-content /></span>
         } @else if (control?.hasError('mismatch')) {
-        <span class="font-medium">Password confirmation is incorrect.</span>
+        <span class="font-medium">{{'validation.incorrect'|translate}}</span>
         }
 
     </div>

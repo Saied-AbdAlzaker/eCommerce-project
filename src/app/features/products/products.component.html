@@ -1,0 +1,18 @@
+<section class="w-[95%] mx-auto">
+    <h2 class="text-3xl text-green-400">Popular Products</h2>
+    <input type="search" placeholder="Search...." [(ngModel)]="searchValue"
+        class="w-1/2 mx-auto block my-5 rounded-2xl border border-green-200" />
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-2">
+        @for (product of productsList() | paginate: { id: 'products',
+        itemsPerPage: pageSize,
+        currentPage: p,
+        totalItems: total } | filter: searchValue; track product.id) {
+        <app-card-product [product]="product" />
+        }
+    </div>
+
+    <div class="flex justify-center mt-3">
+        <pagination-controls id="products" class="my-pagination" (pageChange)="allProducts($event)">
+        </pagination-controls>
+    </div>
+</section>

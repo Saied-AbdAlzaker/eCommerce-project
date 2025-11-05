@@ -1,0 +1,21 @@
+{
+    "product": "Shop Popular Products",
+    "category": "Shop Popular Categories",
+    "brand": "Shop Popular Brands",
+    "navbar": {
+        "home": "Home",
+        "products": "Products",
+        "categories": "Categories",
+        "brands": "Brands",
+        "logout": "Logout",
+        "signin": "Signin",
+        "signup": "Signup"
+    },
+    "auth": {
+        "signupForm": "Register Form",
+        "signinForm": "Login Form",
+        "forgetPasswordForm": "Forgot Password?",
+        "code": "Enter the OTP Code",
+        "newPasswordForm": "Create a new password"
+    }
+}

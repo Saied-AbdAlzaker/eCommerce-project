@@ -1,0 +1,79 @@
+<div class="relative z-0 w-full mb-5 group">
+    <div class="relative">
+        @if (element === "input") {
+        <input [type]="typeInput || (flag ? 'password':'text')" [formControl]="control" [name]="typeInput"
+            [id]="idInput" class="input-style peer" placeholder=" " required [class]="{
+                    'border-green-600':control?.valid,
+                    'border-red-600':control?.invalid && control?.touched
+                }" />
+        }@else if (element === "text") {
+        <textarea [formControl]="control" [name]="typeInput" [id]="idInput" class="input-style peer" placeholder=" "
+            required [class]="{
+                    'border-green-600':control?.valid,
+                    'border-red-600':control?.invalid && control?.touched
+                }"></textarea>
+        }
+
+
+        @if (idInput === 'name') {
+        <span class="absolute top-1/2 end-4 -translate-y-1/2 cursor-pointer">
+            <i class="fa-solid fa-user text-green-600" [class]="{
+                    'text-red-600':control?.invalid && control?.touched
+                }"></i>
+        </span>
+        }
+        @if (idInput === 'email') {
+        <span class="absolute top-1/2 end-4 -translate-y-1/2 cursor-pointer">
+            <i class="fa-solid fa-envelope text-green-600" [class]="{
+                    'text-red-600':control?.invalid && control?.touched
+                }"></i>
+        </span>
+        }
+        @if (idInput === 'phone') {
+        <span class="absolute top-1/2 end-4 -translate-y-1/2 cursor-pointer">
+            <i class="fa-solid fa-phone text-green-600" [class]="{
+                    'text-red-600':control?.invalid && control?.touched
+                }"></i>
+        </span>
+        }
+        @if (idInput === 'password' || idInput === 'rePassword') {
+        <span (click)="flag = !flag" class="absolute top-1/2 end-4 -translate-y-1/2 cursor-pointer">
+            @if (flag) {
+            <i class="fa-solid fa-eye-slash text-green-600" [class]="{
+                    'text-red-600':control?.invalid && control?.touched
+                }"></i>
+            }@else {
+            <i class="fa-solid fa-eye text-green-600" [class]="{
+                    'text-red-600':control?.invalid && control?.touched
+                }"></i>
+            }
+        </span>
+        }
+    </div>
+    <label [for]="idInput" class="label-style" [class]="{
+                    'text-green-600':control?.valid,
+                    'text-red-600':control?.invalid && control?.touched
+                }">{{labelInput}}</label>
+
+
+    <!-- Validation -->
+    @if (control?.errors && control?.touched) {
+    <div class="p-2 mb-4 mt-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+        role="alert">
+        @if (control?.hasError('required')) {
+        <span class="font-medium">Input is required.</span>
+        } @else if (control?.hasError('minlength')) {
+        <span class="font-medium">Input should be more than or equal 3 character.</span>
+        } @else if (control?.hasError('maxlength')) {
+        <span class="font-medium">Input should be less than or equal 20 character.</span>
+        } @else if (control?.hasError('email')) {
+        <span class="font-medium">Please enter a valid email address.</span>
+        } @else if (control?.hasError('pattern')) {
+        <span class="font-medium"><ng-content /></span>
+        } @else if (control?.hasError('mismatch')) {
+        <span class="font-medium">Password confirmation is incorrect.</span>
+        }
+
+    </div>
+    }
+</div>

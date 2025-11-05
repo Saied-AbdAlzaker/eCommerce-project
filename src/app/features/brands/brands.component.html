@@ -1,0 +1,22 @@
+<section class="w-[95%] mx-auto my-5 bg-slate-200 p-5 rounded-xl">
+
+    <div class="md:grid grid-cols-4 gap-5">
+        @for (brand of brandsList; track brand._id) {
+        <article class="group my-5">
+            <div [routerLink]="['/brands',brand._id]" class="cursor-pointer">
+                <img [alt]="brand.name" [src]="brand.image"
+                    class="h-[200px] w-full rounded-2xl object-cover shadow-xl transition group-hover:grayscale-[50%]" />
+
+                <div class="p-4">
+                    <h3 class="text-lg font-medium text-gray-900">{{brand.name}}</h3>
+
+                    <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
+                        {{brand.slug}}
+                    </p>
+                </div>
+            </div>
+        </article>
+        }
+    </div>
+
+</section>

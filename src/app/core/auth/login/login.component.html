@@ -1,0 +1,94 @@
+<section class="shadow-lg rounded-2xl max-w-2xl mx-auto my-3 p-5">
+    <h3 class="text-2xl font-semibold mb-2 text-blue-600 text-center">Login Now</h3>
+    <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+        <app-input [control]="loginForm.get('email')" [typeInput]="'email'" [idInput]="'email'"
+            [labelInput]="'Email'"></app-input>
+
+        <app-input [control]="loginForm.get('password')" [idInput]="'password'" [labelInput]="'Password'">
+            Please enter a valid password.
+        </app-input>
+
+        <div class="flex justify-between">
+            <a routerLink="/forget-password" class="text-blue-600 underline cursor-pointer">Forget Password</a>
+
+            <button type="submit" class="btn w-[20%]">
+                @if (loading) {
+                <i class="fa fa-spin fa-spinner"></i>
+                } @else{
+                Login
+                }
+            </button>
+        </div>
+        <div class="text-center">
+            <span>Create a new account
+                <a routerLink="/register" class="underline text-blue-600 cursor-pointer">
+                    Register
+                </a>
+            </span>
+        </div>
+        @if (msgError) {
+        <p class="text-red-600 p-2 mt-2 text-center">{{msgError}}</p>
+        }
+    </form>
+</section>
+
+
+<!-- <div class="relative z-0 w-full mb-5 group">
+            @let emailControl = loginForm.get('email');
+            <div class="relative">
+                <input type="email" formControlName="email" name="email" id="email" class="input-style peer"
+                    placeholder=" " required [class]="{
+                    'border-green-600':emailControl?.valid,
+                    'border-red-600':emailControl?.invalid && emailControl?.touched
+                }" />
+                <span class="absolute top-1/2 end-4 -translate-y-1/2 cursor-pointer">
+                    <i class="fa-solid fa-envelope text-green-600"></i>
+                </span>
+            </div>
+            <label for="email" class="label-style" [class]="{
+                    'text-green-600':emailControl?.valid,
+                    'text-red-600':emailControl?.invalid && emailControl?.touched
+                }">Email</label>
+            @if (emailControl?.errors && emailControl?.touched) {
+            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                role="alert">
+                @if (emailControl?.getError('required')) {
+                <span class="font-medium">Input is required.</span>
+                } @else if (emailControl?.getError('email')) {
+                <span class="font-medium">Please enter a valid email address.</span>
+                }
+            </div>
+            }
+        </div>
+        <div class="relative z-0 w-full mb-5 group">
+            @let passwordControl = loginForm.get('password');
+            <div class="relative">
+                <input [type]="hidePassword?'password':'text'" formControlName="password" name="password" id="password"
+                    class="input-style peer" placeholder=" " required [class]="{
+                    'border-green-600':passwordControl?.valid,
+                    'border-red-600':passwordControl?.invalid && passwordControl?.touched
+                }" />
+                <span (click)="hidePassword = !hidePassword"
+                    class="absolute top-1/2 end-4 -translate-y-1/2 cursor-pointer">
+                    @if (hidePassword) {
+                    <i class="fa-solid fa-eye text-green-600"></i>
+                    }@else {
+                    <i class="fa-solid fa-eye-slash text-green-600"></i>
+                    }
+                </span>
+            </div>
+            <label for="password" class="label-style" [class]="{
+                    'text-green-600':passwordControl?.valid,
+                    'text-red-600':passwordControl?.invalid && passwordControl?.touched
+                }">Password</label>
+            @if (passwordControl?.errors && passwordControl?.touched) {
+            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                role="alert">
+                @if (passwordControl?.getError('required')) {
+                <span class="font-medium">Input is required.</span>
+                } @else if (passwordControl?.getError('pattern')) {
+                <span class="font-medium">Please enter a valid password.</span>
+                }
+            </div>
+            }
+        </div> -->

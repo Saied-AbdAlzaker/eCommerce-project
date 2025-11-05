@@ -1,0 +1,82 @@
+<section class="w-[90%] mx-auto my-5">
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead
+                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 border-slate-500 border-b-2">
+                <tr>
+                    <th scope="col" class="px-6 py-3">Product Id</th>
+                    <th scope="col" class="px-6 py-3">Is Paid</th>
+                    <th scope="col" class="px-6 py-3">Payment Method Type</th>
+                    <th scope="col" class="px-6 py-3">Total Order Price</th>
+                    <th scope="col" class="px-6 py-3">View</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (order of allOrders; track order._id; let idx = $index) {
+                <tr class="border-main border-b-2">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{order.id}}
+                    </th>
+                    <td class="px-6 py-4">
+                        {{order.isPaid}}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{order.paymentMethodType}}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{order.totalOrderPrice}}
+                    </td>
+                    <td (click)="openModel(idx)" class="px-6 py-4 cursor-pointer">
+                        <a class="font-medium text-main dark:text-main hover:underline">
+                            <i class="fa-solid fa-eye"></i>
+                        </a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    @if (show) {
+    <div
+        class="fixed inset-0 h-full w-full overflow-y-scroll  bg-opacity-10 z-20 flex justify-center items-center rounded-2xl">
+        <div class="bg-slate-200">
+            <div class="p-5 text-end cursor-pointer text-sm"><i (click)="show =false"
+                    class="fa-solid fa-xmark text-red-800"></i></div>
+            <div class="relative overflow-auto shadow-md sm:rounded-lg">
+                <table>
+                    <thead
+                        class="text-xs text-gray-700 uppercase bg-slate-200 dark:bg-gray-700 dark:text-gray-400 border-slate-500 border-b-2">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">Image</th>
+                            <th scope="col" class="px-6 py-3">Title</th>
+                            <th scope="col" class="px-6 py-3">Category</th>
+                            <th scope="col" class="px-6 py-3">Price</th>
+                            <th scope="col" class="px-6 py-3">Total Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (cartItem.length > 0) { @for (item of cartItem; track item._id) { <tr
+                            class="border-main border-b-2">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <img [src]="item.product.imageCover" [alt]="item.product.title"
+                                    class="size-20 rounded-sm object-cover" />
+                            </th>
+                            <td class="px-6 py-4">{{item.product.title.split(' ').slice(0,
+                                3).join(' ')}}</td>
+                            <td class="px-6 py-4">{{item.product.category.name}}</td>
+                            <td class="px-6 py-4">{{item?.price | currency:'EGP'}} </td>
+                            <td class="px-6 py-4">{{item.price * item.count | currency:'EGP'}}</td>
+                        </tr>
+                        }
+                        }@else {
+                        <h2 class="p-10">No products found</h2>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    }
+</section>

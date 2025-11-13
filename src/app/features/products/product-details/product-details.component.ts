@@ -22,6 +22,7 @@ export class ProductDetailsComponent implements OnInit {
   private readonly toastr = inject(ToastrService);
 
   productOptions: OwlOptions = {
+    rtl: true,
     loop: true,
     mouseDrag: false,
     touchDrag: false,
@@ -31,7 +32,7 @@ export class ProductDetailsComponent implements OnInit {
     autoplayTimeout: 2500,
     margin: 15,
     navSpeed: 700,
-    navText: ['<i class="fa-solid fa-arrow-left"></i>', '<i class="fa-solid fa-arrow-right"></i>'],
+    navText: ['<i class="fa-solid fa-arrow-right"></i>', '<i class="fa-solid fa-arrow-left"></i>'],
     responsive: {
       0: {
         items: 1
@@ -57,8 +58,6 @@ export class ProductDetailsComponent implements OnInit {
     this._productsService.getProductById(this.productId).subscribe({
       next: (res) => {
         this.productDetails = res.data;
-      }, error: (err) => {
-
       }
     })
   }
@@ -67,8 +66,6 @@ export class ProductDetailsComponent implements OnInit {
     this.cartService.addProductToCart(id).subscribe({
       next: (res) => {
         this.toastr.success(res.message, 'Success');
-      }, error: (err) => {
-        this.toastr.error(err.error.message, 'Error!');
       }
     })
   }
